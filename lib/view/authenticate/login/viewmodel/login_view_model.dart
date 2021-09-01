@@ -8,4 +8,11 @@ class LoginViewModel = _LoginViewModelBase with _$LoginViewModel;
 abstract class _LoginViewModelBase with Store, BaseViewModel {
   void setContext(BuildContext context) => this.context = context;
   void init() {}
+
+  @observable
+  String? name;
+  @action
+  void changeName(String name) {
+    this.name = name;
+  }
 }
