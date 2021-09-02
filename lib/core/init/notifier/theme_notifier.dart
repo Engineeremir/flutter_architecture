@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_architecture/core/constants/enums/app_theme_enums.dart';
-import 'package:flutter_architecture/core/init/theme/app_theme_light.dart';
+
+import '../../constants/enums/app_theme_enums.dart';
+import '../theme/app_theme_light.dart';
 
 class ThemeNotifier extends ChangeNotifier {
   ThemeData _currentTheme = AppThemeLight.instance.theme;

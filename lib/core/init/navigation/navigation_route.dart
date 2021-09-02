@@ -1,10 +1,9 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_architecture/core/components/test/card/not_found.dart';
-import 'package:flutter_architecture/core/constants/navigation/navigation_constants.dart';
-import 'package:flutter_architecture/view/test/view/test2_view.dart';
+
+import '../../../view/authenticate/login/view/login_view.dart';
+
+import '../../constants/navigation/navigation_constants.dart';
 
 class NavigationRoute {
   static NavigationRoute _instance = NavigationRoute._init();
@@ -15,11 +14,11 @@ class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
       case NavigationConstants.TEST_VIEW:
-        return normalNavigate(TestsView());
+        return normalNavigate(LoginView());
 
       default:
     }
-    return MaterialPageRoute(builder: (context) => NotFoundNavigationWidget());
+    return MaterialPageRoute(builder: (context) => LoginView());
   }
 
   MaterialPageRoute normalNavigate(Widget widget) =>

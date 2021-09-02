@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architecture/core/base/view/base_widget.dart';
-import 'package:flutter_architecture/core/extension/context_extension.dart';
-import 'package:flutter_architecture/view/authenticate/login/viewmodel/login_view_model.dart';
+
+import '../../../../core/base/view/base_widget.dart';
+import '../../../../core/extension/context_extension.dart';
+import '../viewmodel/login_view_model.dart';
 
 class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return BaseView<LoginViewModel>(
@@ -19,16 +18,19 @@ class LoginView extends StatelessWidget {
   }
 
   Scaffold buildScaffold(BuildContext context) => Scaffold(
-          body: ListView(
+          body: Column(
         children: [
-          Container(
-            height: context.height * .4,
-            color: context.colors.background,
-            padding: context.paddingLow,
+          TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+            ),
           ),
-          Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: context.lowValue, vertical: context.normalValue))
         ],
       ));
+
+  Text buildText(BuildContext context) {
+    return Text("hello",
+        style: context.textTheme.headline1!.copyWith(
+            color: context.theme.errorColor, fontWeight: FontWeight.bold));
+  }
 }

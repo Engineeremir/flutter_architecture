@@ -6,30 +6,28 @@ class BaseView<T extends Store> extends StatefulWidget {
   final T viewModel;
   final Function(T model) onModelReady;
 
-
-  const BaseView(
-      {Key? key,
-      required this.onPageBuilder,
-      required this.viewModel,
-      required this.onModelReady,
-      })
-      : super(key: key);
+  const BaseView({
+    Key? key,
+    required this.onPageBuilder,
+    required this.viewModel,
+    required this.onModelReady,
+  }) : super(key: key);
 
   @override
-  _BaseViewState createState() => _BaseViewState();
+  _BaseViewState<T> createState() => _BaseViewState<T>();
 }
 
-class _BaseViewState extends State<BaseView> {
+class _BaseViewState<T extends Store> extends State<BaseView<T>> {
+  late T model;
   @override
   void initState() {
-    // TODO: implement initState
+    model = widget.viewModel;
+    widget.onModelReady(model);
     super.initState();
-    if (widget.onModelReady != null) widget.onModelReady(widget.viewModel);
   }
-
 
   @override
   Widget build(BuildContext context) {
-    return widget.onPageBuilder(context, widget.viewModel);
+    return widget.onPageBuilder(context, model);
   }
 }
